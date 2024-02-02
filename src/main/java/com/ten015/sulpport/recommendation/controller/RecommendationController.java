@@ -24,10 +24,14 @@ public class RecommendationController {
         this.recommendationService = recommendationService;
     }
 
+    //덕담
     @PostMapping ("greetings")
-    public ResponseEntity<String> generateText (@RequestBody GreetingsRequest greetingsRequest) {
+    public ResponseEntity<String> generateGreetings (@RequestBody GreetingsRequest greetingsRequest) {
         logger.info("덕담 컨트롤러 진입");
-        String response = recommendationService.generatePrompt(greetingsRequest);
+        String response = recommendationService.generateGreetings(greetingsRequest);
         return ResponseEntity.ok(response);
     }
+
+    //용돈
+
 }
