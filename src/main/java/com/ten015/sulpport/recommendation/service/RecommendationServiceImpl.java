@@ -31,7 +31,7 @@ public class RecommendationServiceImpl implements RecommendationService {
     }
 
     @Override
-    public String generatePrompt(GreetingsRequest greetingsReauest) {
+    public String generateGreetings (GreetingsRequest greetingsReauest) {
         logger.info("service진입");
         Map<String, Object> requestBody = new HashMap<>();
 
