@@ -87,8 +87,8 @@ public class RecommendationServiceImpl implements RecommendationService {
             List<Map<String, String>> messages = RecommendationUtils.createInitialMessages();
 
             String name = moneyRequest.getName() != null ? moneyRequest.getName() : "이름";
-            String userMessage = String.format("너는 용돈을 추천해주는 챗봇이야. 내가 용돈을 줄 %s의 나이대는 %s이며, 나와의 관계는 %s관계야. %s에게 추천할 금액 n원! 형식으로 답해줘.",
-                    name,moneyRequest.getAgeGroup(), moneyRequest.getRelations(), name);
+            String userMessage = String.format("너는 용돈을 추천해주는 챗봇이야. '%s에게 추천할 금액 n원!' 형식으로 답해줘야 돼. 내가 용돈을 줄 %s의 나이대는 %s이며, 나와의 관계는 %s관계야. 형식에 맞게 용돈을 추천해줘.",
+                    name,name, moneyRequest.getAgeGroup(), moneyRequest.getRelations());
 
             RecommendationUtils.addUserMessage(messages, userMessage);
 
