@@ -2,6 +2,8 @@ package com.ten015.sulpport.recommendation.dto;
 
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class GiftRequest {
 
@@ -10,6 +12,6 @@ public class GiftRequest {
     private String relations; //상대방과의 관계
     private String situation; // 상대방의 현재 상황
     private String priceRange; // 선물 가격대
-    private String category; // 선물 종류
+    private List<String> category; // 선물 종류
 
 }
