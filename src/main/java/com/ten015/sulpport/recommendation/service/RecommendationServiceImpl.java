@@ -49,7 +49,7 @@ public class RecommendationServiceImpl implements RecommendationService {
             String name = greetingsReauest.getName() != null ? greetingsReauest.getName() : "이름";
 
             // prompt
-            String userMessage = String.format("%s에게 설날 덕담을 보낼거야. 나이는 %s이며, 나와의 관계는 %s관계야. 상대방의 현재 상황은 %s이며, 이에 맞는 덕담을 %s로, %s 말투로 추천해줘.",
+            String userMessage = String.format("%s에게 설날 덕담을 보낼거야. 나이는 %s대이며, 나와의 관계는 %s관계야. 상대방의 현재 상황은 %s이며, 이에 맞는 덕담을 %s로, %s 말투로 추천해줘.",
                     name,
                     greetingsReauest.getAgeGroup(),
                     greetingsReauest.getRelations(),
@@ -87,7 +87,7 @@ public class RecommendationServiceImpl implements RecommendationService {
             List<Map<String, String>> messages = RecommendationUtils.createInitialMessages();
 
             String name = moneyRequest.getName() != null ? moneyRequest.getName() : "이름";
-            String userMessage = String.format("너는 용돈을 추천해주는 챗봇이야. '%s에게 추천할 금액 n원!' 형식으로 답해줘야 돼. 내가 용돈을 줄 %s의 나이대는 %s이며, 나와의 관계는 %s관계야. 형식에 맞게 용돈을 추천해줘.",
+            String userMessage = String.format("너는 용돈을 추천해주는 챗봇이야. '%s에게 추천할 금액 n원!' 형식으로 답해줘야 돼. 내가 용돈을 줄 %s의 나이대는 %s대이며, 나와의 관계는 %s관계야. 형식에 맞게 용돈을 추천해줘.",
                     name,name, moneyRequest.getAgeGroup(), moneyRequest.getRelations());
 
             RecommendationUtils.addUserMessage(messages, userMessage);
@@ -119,13 +119,13 @@ public class RecommendationServiceImpl implements RecommendationService {
         List<Map<String, String>> messages = RecommendationUtils.createInitialMessages();
 
         String name = giftRequest.getName() != null ? giftRequest.getName() : "이름";
-        String userMessage = String.format("%s의 나이대는 %s이고, 상황은 %s인 상황이야. 나와는 '%s'관계고, 가격대가 %s인 %s 카테고리의 선물을 한개만 추천해주고 이유도 1~2문장으로 설명해서, 선물이름: , 이유: 와 같은 형식으로만 제안해줘.",
+        String userMessage = String.format("%s의 나이대는 %s대이고, 상황은 %s인 상황이야. 나와는 '%s'관계고, 가격대가 %s인 %s 카테고리의 선물을 한개만 추천해주고 이유도 1~2문장으로 설명해서, 선물이름: , 이유: 와 같은 형식으로만 제안해줘.",
                 name,
                 giftRequest.getAgeGroup(),
                 giftRequest.getSituation(),
                 giftRequest.getRelations(),
                 giftRequest.getPriceRange(),
-                giftRequest.getCategory());
+                String.join(", ", giftRequest.getCategory()));
 
         RecommendationUtils.addUserMessage(messages, userMessage);
         requestBody.put("messages", messages);
